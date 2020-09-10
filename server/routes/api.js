@@ -4,8 +4,12 @@ const express   = require("express")
 const router    = express.Router()
 const axios     = require('axios')
 
-const getUrl = (city) =>{
+const getUrl = city =>{
     return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+}
+
+const getIcon = iconUrl =>{
+    return `http://openweathermap.org/img/wn/${iconUrl}@2x.png`
 }
 
 router.get("/city/:cityName", async (req,res) => {
@@ -15,7 +19,7 @@ router.get("/city/:cityName", async (req,res) => {
         let cityWeather = {
             name:           weather.data.name, 
             temprature:     weather.data.main.temp,
-            conditionPic:   weather.data.weather[0].icon,
+            conditionPic:   getIcon(weather.data.weather[0].icon),
             condition:      weather.data.weather[0].description
         }
         res.send(cityWeather)
@@ -37,8 +41,8 @@ router.get("/cities", async (req,res) =>{
 
 router.post("/city" , async (req,res)=>{
     try {
-        const city      = new City(req.body)
-        const saveCity  = await city.save() 
+        const city     = new City(req.body)
+        const saveCity = await city.save() 
         res.send(saveCity)
     }
     catch(err){
