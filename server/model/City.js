@@ -14,8 +14,7 @@ const cityCheama = new Schema({
     name:           String,
     temprature:     Number, 
     condition:      String, 
-    conditionPic:   String,
-    AddButtonVisibility:     {type:String , default: "added"}
+    conditionPic:   String
 }) 
 const City = mongoose.model("City" , cityCheama)
 
