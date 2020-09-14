@@ -1,7 +1,6 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "axios": "^0.20.0",
@@ -27,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/Ziv22/Weather-App/issues"
   },
-  "homepage": "https://github.com/Ziv22/Weather-App#readme"
+  "homepage": "https://github.com/Ziv22/Weather-App#readme",
+  "description": ""
 }

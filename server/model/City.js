@@ -1,5 +1,5 @@
 const mongoose  = require("mongoose")
-mongoose.connect('mongodb://localhost:27017/CitiesDB' , {
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost:27017/CitiesDB' , {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     })
@@ -14,7 +14,8 @@ const cityCheama = new Schema({
     name:           String,
     temprature:     Number, 
     condition:      String, 
-    conditionPic:   String
+    conditionPic:   String,
+
 }) 
 const City = mongoose.model("City" , cityCheama)
 
