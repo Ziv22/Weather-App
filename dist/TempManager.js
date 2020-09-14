@@ -8,12 +8,12 @@ class TempManager {
         return foundCity
     }
 
-    isUnique = cityName => {
-        if(this.findCityByName(cityName)){
-            return false
-        }
-        return true
-    }
+    // isUnique = cityName => {
+    //     if(this.findCityByName(cityName)){
+    //         return false
+    //     }
+    //     return true
+    // }
     
     getDataFromDB = async () =>{
         try{
@@ -27,21 +27,9 @@ class TempManager {
         }
     }
 
-    getCityData = async (cityName) =>{
-        try{
-            if(this.isUnique  (cityName)){
-                let city = await $.get(`/city/${cityName}`)
-                this.cityData.push(city)
-            }
-            return this.cityData
-        }
-        catch(err){
-            console.log(err) 
-        }
-    }
     // getCityData = async (cityName) =>{
     //     try{
-    //         if(!this.findCityByName(cityName)){
+    //         // if(this.isUnique  (cityName)){
     //             let city = await $.get(`/city/${cityName}`)
     //             this.cityData.push(city)
     //         }
@@ -51,6 +39,19 @@ class TempManager {
     //         console.log(err) 
     //     }
     // }
+    getCityData = async (cityName) =>{
+        try{
+            // if(!this.findCityByName(cityName)){
+                let city = await $.get(`/city/${cityName}`)
+                console.log(city)
+                this.cityData.push(city)
+            // }
+            return this.cityData
+        }
+        catch(err){
+            console.log(err) 
+        }
+    }
 
     saveCity = async cityName =>{
         try{

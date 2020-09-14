@@ -2,7 +2,7 @@ const   render          = new Render(),
         tempManager     = new TempManager(),
         $container      = $("#container"),
         $cityInput      = $('#city-input'),
-        $searchButton   = $('#serach-button')
+        $searchButton   = $('#search-button')
 
 
 const loadPage = async () =>{
@@ -45,7 +45,5 @@ $container.on('click' , ".refresh" , async function(){
     await tempManager.updateCity(currentCity)
     render.renderData(tempManager.cityData)
 })
-
-
 
 $( document ).ready(loadPage())
