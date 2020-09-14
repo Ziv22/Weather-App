@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/handlebars/dist/handlebars.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    
+    <title>MyWeather</title>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>My Weather</h1>
+            <div id="serach-container">
+                <input  id="city-input" type="text" >
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div id="cities-container"></div>
+        <div id="footer"></div>
+    </div>
+    <script id="weather-template" type="text/x-handlebars-template">
+        {{#each allCitiesData}}
+        <div class="city-container" data-id="{{name}}">
+            <img    class="icon" src="{{conditionPic}}" >
+            <span   class="temprature"> {{temprature}} &#8451;</span>     
+            <span     class="city-name"> {{name}}</span>
+            <p      class="conditions">{{condition}}</p> 
+            <div class="buttons-wraper">
+                {{#unless _id}}
+                <i class="fas fa-plus-circle add"></i>
+                {{/unless}}
+                {{#if _id}}
+                <i class="fas fa-sync-alt refresh"></i>
+                <i class="fas fa-minus-circle remove"></i>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+     <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-a11y="true"></script>
+    <script src="./TempManager.js"></script>
+    <script src="./Renderer.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
